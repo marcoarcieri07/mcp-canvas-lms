@@ -1,15 +1,11 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "src/index.ts",
-      "use": "@vercel/node"
+  "buildCommand": "npm run build",
+  "functions": {
+    "api/mcp.js": {
+      "includeFiles": "build/**"
     }
-  ],
-  "routes": [
-    {
-      "src": "/sse",
-      "dest": "src/index.ts"
-    }
+  },
+  "rewrites": [
+    { "source": "/mcp", "destination": "/api/mcp" }
   ]
 }

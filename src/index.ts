@@ -1950,6 +1950,10 @@ export class CanvasMCPServer {
     return allowedOrigins.includes(origin);
   }
 
+  async connectHttpTransport(transport: StreamableHTTPServerTransport): Promise<void> {
+    await this.server.connect(transport);
+  }
+
   async connectStdio(stdin?: Readable, stdout?: Writable): Promise<void> {
     const transport = new StdioServerTransport(stdin, stdout);
     await this.server.connect(transport);
